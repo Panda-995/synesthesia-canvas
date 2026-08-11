@@ -1,0 +1,14 @@
+.git
+.github
+.next
+.vinext
+.wrangler
+.pnpm-store
+node_modules
+dist
+coverage
+outputs
+work
+*.log
+.env*
+.DS_Store

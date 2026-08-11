@@ -5,6 +5,13 @@ import { Readable } from "node:stream";
 import worker from "../dist/server/index.js";
 
 const root = resolve("dist/client");
+const host = process.env.HOST ?? "127.0.0.1";
+const port = Number.parseInt(process.env.PORT ?? "3000", 10);
+
+if (!Number.isInteger(port) || port < 1 || port > 65535) {
+  throw new Error("PORT must be an integer between 1 and 65535");
+}
+
 const contentTypes = {
   ".css": "text/css; charset=utf-8",
   ".html": "text/html; charset=utf-8",
@@ -79,6 +86,6 @@ server.on("error", (error) => {
   throw error;
 });
 
-server.listen(3000, "127.0.0.1", () => {
-  process.stdout.write("Local preview: http://localhost:3000/\n");
+server.listen(port, host, () => {
+  process.stdout.write(`Local preview: http://${host}:${port}/\n`);
 });

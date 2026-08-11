@@ -22,3 +22,22 @@
 - `Cmd/Ctrl + Z` 撤销
 
 作品会自动保存在当前设备。分享按钮会把可恢复的工程数据写入 URL，导出按钮使用 `OfflineAudioContext` 生成 44.1 kHz 立体声 PCM WAV。
+
+## Docker 部署
+
+公开镜像同时支持 `linux/amd64` 和 `linux/arm64`：
+
+```bash
+docker pull ghcr.io/panda-995/synesthesia-canvas:latest
+docker run -d --name synesthesia-canvas -p 3000:3000 ghcr.io/panda-995/synesthesia-canvas:latest
+```
+
+也可以直接使用 Compose：
+
+```bash
+docker compose up -d
+```
+
+启动后访问 `http://localhost:3000`。如需修改宿主机端口，可使用 `PORT=8080 docker compose up -d`。
+
+每次推送到 `main` 分支后，GitHub Actions 会自动构建并发布双架构镜像；`v*.*.*` 标签还会生成对应的语义化版本镜像标签。
