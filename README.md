@@ -41,3 +41,9 @@ docker compose up -d
 启动后访问 `http://localhost:3000`。如需修改宿主机端口，可使用 `PORT=8080 docker compose up -d`。
 
 每次推送到 `main` 分支后，GitHub Actions 会自动构建并发布双架构镜像；`v*.*.*` 标签还会生成对应的语义化版本镜像标签。
+
+---
+
+## 📄 许可证 / License
+
+本项目采用 [AGPL-3.0](LICENSE) 开源协议。
